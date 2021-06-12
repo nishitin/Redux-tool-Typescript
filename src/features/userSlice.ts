@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
-
-//中身の実装をもたず、型の定義だけもつやつかなり優秀
 interface USER {
   displayName: string;
   photoUrl: string;
@@ -21,13 +19,11 @@ export const userSlice = createSlice({
     },
     updateUserProfile: (state, action: PayloadAction<USER>) => {
       state.user.displayName = action.payload.displayName;
-      state.user.photoUrl = action.payload.displayName;
+      state.user.photoUrl = action.payload.photoUrl;
     },
   },
 });
 
 export const { login, logout, updateUserProfile } = userSlice.actions;
-
 export const selectUser = (state: RootState) => state.user.user;
-
 export default userSlice.reducer;
